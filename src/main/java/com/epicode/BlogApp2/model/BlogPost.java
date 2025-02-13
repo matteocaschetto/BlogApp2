@@ -1,28 +1,28 @@
 package com.epicode.BlogApp2.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
-
-@Entity(name= "blogposts")
+@Entity(name = "blogposts")
 @Component
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class BlogPost {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String categoria;
     private String titolo;
-    private String cover = null;
+    private String cover;
     private String contenuto;
-    private int tempodDiLettura;
+    private Integer tempoDiLettura;
     @ManyToOne
-    @JoinColumn(name ="author_id", nullable = false)
+    @JoinColumn(name = "author_id")
     private Autore autore;
+
 }
